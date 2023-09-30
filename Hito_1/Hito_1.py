@@ -10,7 +10,7 @@ def F_Kepler(U):
     return array([vx, vy, -x/mr, -y/mr])
 
 def G(x):
-    x - A - dt/2 * (F_Kepler(A) + F_Kepler(x))
+    return x - A - dt/2 * (F_Kepler(A) + F_Kepler(x))
 
 
 N = 10000
