@@ -32,7 +32,6 @@ plt.show()
 U = array(zeros((4,N)))
 U[:,0] = [1, 0, 0, 1]
 
-# This does not seem to work... 
 for ii in range(0,N-1):
     A = U[:,ii]
     U[:,ii+1] = optimize.newton(func = G, x0 = A)
