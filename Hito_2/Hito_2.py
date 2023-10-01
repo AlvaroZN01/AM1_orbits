@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy import optimize
 
 
-
+# Temporal schemes to integrate a Cauchy problem
 def Euler(F, dt, t0, U0):
     return U0 + dt * F(t0, U0)
 
@@ -26,8 +26,7 @@ def Inverse_Euler(F, dt, t0, U0):
 def F_EI(x, F, dt, t0, U0):
     return x - U0 - dt * F(t0 + dt, x)
 
-
-
+# Cauchy problem solver
 def Cauchy(Solver, F, U0, t0, dt, N):
     U = array(zeros((len(U0),N)))
     U[:,0] = U0
