@@ -46,8 +46,9 @@ def F_Kepler(t, U):
     return array([vx, vy, -x/mr, -y/mr])
 
 # Integration parameters definition
-N = 10000
+t_total = 10
 dt = 0.001
+N = t_total / dt
 U0 = [1, 0, 0, 1]
 t0 = 0
 
