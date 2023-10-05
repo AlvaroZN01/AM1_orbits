@@ -29,12 +29,17 @@ def Inverse_Euler(U0, t0, tf, f):
     return optimize.newton(func = Residual, x0 = U0)
 
 # Cauchy problem solver
+# def Cauchy(t, temporal_scheme, f, U0)
 def Cauchy(Solver, f, U0, t0, dt, N):
+    # U = array (zeros((len(U0),len(t))))
     U = array(zeros((len(U0),N)))
     U[:,0] = U0
+    # Esto fuera
     t = t0
     for ii in range(0, N - 1):
+        # U[:,ii+1] = temporal_scheme(U[:,ii], t[ii], t[ii+1], f)
         U[:,ii+1] = Solver(U[:,ii], t, t + dt, f)
+        # Esto fuera
         t = t + dt
     return U
 
