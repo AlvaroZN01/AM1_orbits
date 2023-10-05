@@ -8,7 +8,9 @@ def Euler(U0, t0, tf, f):
     return U0 + (tf - t0) * f(t0, U0)
 
 def Crank_Nicolson(U0, t0, tf, f):
-    return optimize.newton(func = F_CK, x0 = U0, fprime = None, args = (U0, t0, tf, f))
+    def Residual(x):
+        return x - U0 - (tf - t0)/2 * (f(t0, U0) + f(tf, x))
+    return optimize.newton(func = Residual, x0 = U0)
 
 def F_CK(x, U0, t0, tf, f):
     return x - U0 - (tf - 0)/2 * (f(t0, U0) + f(tf, x))
@@ -22,10 +24,9 @@ def RK4(U0, t0, tf, f):
     return U0 + dt/6 * (k1 + 2*k2 + 2*k3 + k4)
 
 def Inverse_Euler(U0, t0, tf, f):
-    return optimize.newton(func = F_EI, x0 = U0, fprime = None, args = (U0, t0, tf, f))
-
-def F_EI(x, U0, t0, tf, f):
-    return x - U0 - (t0 - tf) * f(tf, x)
+    def Residual(x):
+        return x - U0 - (t0 - tf) * f(tf, x)
+    return optimize.newton(func = Residual, x0 = U0)
 
 # Cauchy problem solver
 def Cauchy(Solver, f, U0, t0, dt, N):
@@ -59,3 +60,4 @@ U = Cauchy(Inverse_Euler, F_Kepler, U0, t0, dt, N)
 plt.axis('equal')
 plt.plot(U[0,:],U[1,:])
 plt.show()
+
