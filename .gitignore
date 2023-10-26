@@ -162,3 +162,12 @@ cython_debug/
 # .vs folders
 **/.vs/
 **/.vscode/
+
+# LaTeX temporal files
+**/Informe_Hito*/*.*
+**/Informe_Hito*/!.pdf
+**/Informe_Hito*/!.tex
+**/Informe_Hito*/!.bib
+**/Informe_Hito*/Chapters/*
+**/Informe_Hito*/Chapters/!.tex
+
