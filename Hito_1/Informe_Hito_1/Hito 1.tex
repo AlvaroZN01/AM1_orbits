@@ -1,8 +1,8 @@
-% !TeX spellcheck = en_US
+% !TeX spellcheck = es_ES
 
 %------------Basic document settings--------------%
-\documentclass[12pt, twoside, openright]{report}
-\usepackage[a4paper,width = 150mm, top=25mm, bottom= 25mm, bindingoffset = 14mm, footskip=35pt]{geometry}
+\documentclass[12pt, openany]{article}
+\usepackage[a4paper,width = 150mm, top=25mm, bottom= 25mm, footskip=35pt]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 
@@ -27,8 +27,9 @@
 \usepackage{todonotes}
 \usepackage{multirow}
 \usepackage{bm}
-\usepackage{floatpag}
 \usepackage{afterpage}
+\usepackage{tabularx}
+\usepackage{float}
 
 %-------------Math and Physics packages-----------%
 \usepackage{amssymb}
@@ -88,15 +89,13 @@
 %---------Header and footer definitions----------%
 
 % Define Header
-\fancyhead[LE]{\hspace{0.3cm}{\leftmark}} 
-\fancyhead[RO]{{\rightmark}\hspace{0.3cm}} 
-\fancyhead[RE]{} 
-\fancyhead[LO]{} 
+\fancyhf{}
+\fancyhead[L]{\hspace{0.3cm}{\leftmark}} 
 
 % Define Footer
-\lfoot{\hspace{0.3cm} Álvaro Zurdo Navajo}
-\cfoot{\thepage}
-\rfoot{Cambiar por asignatura y trabajo \hspace{0.3cm}} 
+\fancyfoot[L]{\hspace{0.3cm} Álvaro Zurdo Navajo}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Trabajo 1 - MCPS \hspace{0.3cm}} 
 
 %Define width of horizontal line in the header
 \renewcommand{\headrulewidth}{0.4pt}
@@ -108,15 +107,19 @@
 
 %--Establish when figures and tables begin to count--%
 
-\counterwithin{figure}{chapter}
-\counterwithin{table}{chapter}
-\numberwithin{equation}{chapter}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\numberwithin{equation}{section}
 
 %--Pasar algunas palabras a español--%
 %\renewcommand{\listtablename}{Índice de tablas}
 \addto\captionsspanish{%
-  \renewcommand{\listtablename}{Índice de tablas}%
+  \renewcommand{\listtablename}{Lista de tablas}%
+  \renewcommand{\listfigurename}{Lista de figuras}%
+  \renewcommand{\tablename}{Tabla}%
+  \renewcommand{\lstlistingname}{Código}
 }
+
 
 %----------Use of nomenclature section-----------%
 \usepackage{enumitem}
@@ -135,86 +138,79 @@
 	\ifstrequal{#1}{B}{Symbols}{}}%
 	]}
 \makenomenclature
+
+%----------Code formating-----------%
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
 \begin{document}
 
 \pagenumbering{roman}
 \onehalfspacing
 
 \input{Chapters/titlepage}
-
-%\chapter*{Abstract}
-%\addcontentsline{toc}{chapter}{Abstract}
-%
-%The objective of this thesis is to asses the performance of a Kalman filter when it is applied to an airborne-launched orbital launcher. Specifically, the study focuses on the captured flight phase of the launching sequence, testing the effectiveness of the filter during an aborted launch maneuver, in which the launcher remains attached to the airplane. To conduct the analysis, a simulated flight profile is created and implemented into a simulator, which provides simulated measurements from the launcher's IMU and GNSS sensors. The Kalman filter is then tested using those measurements, estimating the launcher's position, velocity and attitude. The study aims to evaluate the algorithm's accuracy at estimating the launcher's state variables during this flight profile, as well as the effects of measurement errors from the sensors and initial conditions variations on the accuracy of the estimation. Extensive simulations and analysis are performed using Monte-Carlo methods to asses the effectiveness of the Kalman filter, providing valuable insights into its behavior during the captured phase of the launcher's flight. \\
-%
-%\textbf{Key words:} Kalman filter, navigation, IMU, GNSS, sensor error modeling, flight mechanics, ODE, quaternions, Monte-Carlo, flat Earth hypothesis correction. 
+\clearpage
 
 \doublespacing	
 \tableofcontents
 \pagestyle{plain}
-
-\addcontentsline{toc}{chapter}{\listfigurename}
-\listoffigures
-\cleardoublepage
-\thispagestyle{plain}
-
-\addcontentsline{toc}{chapter}{List of Tables}
-\listoftables
-\cleardoublepage
-
-%\onehalfspacing
-%\addcontentsline{toc}{chapter}{Nomenclature}
-%\printnomenclature
-
-%\nomenclature[A]{$a$, $\beta$, $C$}{Scalars}
-
-%\nomenclature[B]{$T$}{Thrust}
-
 \clearpage
 
-%\textbf{\Large
-%	{Acronyms}}
-%\begin{acronym}[MEMS]
-%	\acro{GNC}{Guidance, Navigation and Control}
-%\end{acronym}
-
-\cleardoublepage
-
-%\textbf{\Large{Symbols}} \\
-%\cleardoublepage
+%\addcontentsline{toc}{section}{\listfigurename}
+%\listoffigures
+%\clearpage
+%\thispagestyle{plain}
+%
+%\addcontentsline{toc}{section}{\listtablename}
+%\listoftables
+%\clearpage
 
 \pagestyle{fancy}
 \pagenumbering{arabic}
 \setcounter{page}{1}	
 \onehalfspacing		
-\chapter{Introducción}
+\section{Introducción}
 	\label{chap:intro}
 	\input{Chapters/Introduction}
+\clearpage
 	
-\chapter{Capítulo 1}
+\section{Desarrollo}
+	\label{chap:1}
+	\input{Chapters/Chapter1}
+\clearpage
+
+\section{Código}
 	\label{chap:2}
 	\input{Chapters/Chapter2}
-	
-\chapter{Capítulo 2}
-	\label{chap:3}
-	\input{Chapters/Chapter3}
+\clearpage
 
-\chapter{Capítulo 3}
-	\label{chap:4}
-	\input{Chapters/Chapter4}
-
-\chapter{Conclusión}
-	\label{chap:conclusiones}
-	\input{Chapters/Conclusion}
-	
-\appendix
-\chapter{Ejemplo de anexo (Sistemas de referencia)}
-	\label{chap:ap_ref_sys}
-	\input{Chapters/Appendix_ref_sys}
-	
-\nocite{*}
-\bibliography{biblio}
-
+\section{Resultados}
+	\label{chap:resultados}
+	\input{Chapters/Resultados}
 
 \end{document}}
 		
