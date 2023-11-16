@@ -18,7 +18,7 @@ t = arange(t0, N * dt, dt)
 U0 = [1, 0, 0, 1]
 
 # Cauchy problem solver
-U = Cauchy(t, Crank_Nicolson, F_Kepler, U0)
+U = Cauchy(t, Inverse_Euler, F_Kepler, U0)
 
 # Plot results
 plt.axis('equal')
