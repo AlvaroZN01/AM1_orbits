@@ -1,37 +1,7 @@
-from numpy import arange, array, zeros, linalg, log10
+from numpy import arange, array, log10, linalg, zeros
 import matplotlib.pyplot as plt
-from scipy import optimize
-
-
-# Temporal schemes to integrate a Cauchy problem
-def Euler(U0, t0, tf, f):
-    return U0 + (tf - t0) * f(t0, U0)
-
-def Crank_Nicolson(U0, t0, tf, f):
-    def Residual(x):
-        return x - U0 - (tf - t0)/2 * (f(t0, U0) + f(tf, x))
-    return optimize.newton(func = Residual, x0 = U0)
-
-def RK4(U0, t0, tf, f):
-    dt = tf - t0
-    k1 = f(t0, U0)
-    k2 = f(t0 + dt/2, U0 + k1*dt/2)
-    k3 = f(t0 + dt/2, U0 + k2*dt/2)
-    k4 = f(t0 + dt, U0 + k3*dt)
-    return U0 + dt/6 * (k1 + 2*k2 + 2*k3 + k4)
-
-def Inverse_Euler(U0, t0, tf, f):
-    def Residual(x):
-        return x - U0 - (t0 - tf) * f(tf, x)
-    return optimize.newton(func = Residual, x0 = U0)
-
-# Cauchy problem solver
-def Cauchy(t, temporal_scheme, f, U0):
-    U = array(zeros((len(U0),len(t))))
-    U[:,0] = U0
-    for ii in range(0, N - 1):
-        U[:,ii+1] = temporal_scheme(U[:,ii], t[ii], t[ii+1], f)
-    return U
+from ODEs.Cauchy_problem import Cauchy
+from ODEs.Temporal_schemes import Euler, Inverse_Euler, RK4, Crank_Nicolson
 
 # Error evaluation using Richardson extrapolation 
 def error_eval(tn, temporal_scheme, f, U0):
@@ -47,7 +17,7 @@ def error_eval(tn, temporal_scheme, f, U0):
         log_norm_E_n[ii] = log10(linalg.norm(V[:,ii*2] - U[:,ii]))
     n_vec = arange(0, len(t), 1)
     n_vec = log10(n_vec)
-    plt.plot(n_vec, log_norm_E_n) # Según las gráficas de clase, debería salir con pendiente negativa.
+    plt.plot(n_vec, log_norm_E_n) # Segun las graficas de clase, deberia salir con pendiente negativa.
     plt.show()
     return n_vec
 
