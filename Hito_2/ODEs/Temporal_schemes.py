@@ -18,5 +18,5 @@ def RK4(U0, t0, tf, f):
 
 def Inverse_Euler(U0, t0, tf, f):
     def Residual(x):
-        return x - U0 - (t0 - tf) * f(tf, x)
+        return x - U0 - (tf - t0) * f(tf, x)
     return optimize.newton(func = Residual, x0 = U0)
