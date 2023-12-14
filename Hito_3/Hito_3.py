@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from ODEs.Cauchy_problem import Cauchy
 from ODEs.Temporal_schemes import Euler, Inverse_Euler, RK4, Crank_Nicolson
 
-# Error evaluation using Richardson extrapolation 
+# Evaluacion del error empleando la extrapolacion de Richardson 
 def Error_Cauchy_Problem( t1, temporal_scheme, U0, f, order):  
     N = len(t1)-1
     t1 = t1
@@ -25,7 +25,7 @@ def Error_Cauchy_Problem( t1, temporal_scheme, U0, f, order):
        
     return error, U1 + error 
 
-# Temporal convergence rate using Richardson extrapolation 
+# Ratio de convergencia temporal empleando la extrapolacion de Richardson 
 def Richardson_extrapolation(t1, temporal_scheme, f, U0, m):
     log_E = zeros(m)
     log_N = zeros(m)
@@ -53,33 +53,33 @@ def Richardson_extrapolation(t1, temporal_scheme, f, U0, m):
 
     return order
 
-# Function to be integrated
+# Funcion a integrar (ecuacion de las orbitas de Kepler)
 def F_Kepler(t, U):
     
     x, y, vx, vy = U[0], U[1], U[2], U[3]
     mr = (x**2 + y**2)**1.5
     return array([vx, vy, -x/mr, -y/mr])
 
-# Integration parameters definition
+# Definicion de los parametros de integracion
 dt = 0.1
 N = 1001
 t0 = 0
 t = arange(t0, N * dt, dt)
 U0 = [1, 0, 0, 1]
 
-# Cauchy problem solver
+# Resolucion del problema de Cauchy
 U = Cauchy(t, RK4, F_Kepler, U0)
 plt.plot(U[0,:],U[1,:])
 plt.show()
 
-# Error estimation
+# Estimacion del error
 [error_U, U_wne] = Error_Cauchy_Problem(t, RK4, U0, F_Kepler, 1)
 plt.plot(error_U[0,:],error_U[1,:])
 plt.show()
 plt.plot(U_wne[0,:],U_wne[1,:])
 plt.show()
 
-# Temporal convergence rate
+# Ratio de convergencia temporal
 # order = Richardson_extrapolation(t, Euler, F_Kepler, U0, 10)
 # print('The order of the Euler scheme is', order)
 # order = Richardson_extrapolation(t, Inverse_Euler, F_Kepler, U0, 10)
