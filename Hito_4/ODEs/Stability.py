@@ -1,5 +1,6 @@
 from numpy import zeros, linspace
 
+# Funcion para calcular las regiones de estabilidad
 def Stability_region(Scheme, N, x0, xf, y0, yf): 
     x = linspace(x0, xf, N)
     y = linspace(y0, yf, N)

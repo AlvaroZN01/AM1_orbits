@@ -15,14 +15,14 @@ def F_Kepler(t, U):
 def Oscillator(t, U):
     return array([U[1], -U[0]])
 
-# Integration parameters definition
+# Definicion de los parametros de integracion
 dt = 0.1
 N = 1001
 t0 = 0
 t = arange(t0, N * dt, dt)
 U0 = [1, 0]
 
-# Cauchy problem solver
+# Resolcion del problema de Cauchy usando todos los esquemas temporales
 U = Cauchy(t, Euler, Oscillator, U0)
 plt.plot(t, U[1,:])
 plt.show()
@@ -39,7 +39,7 @@ U = Cauchy(t, Crank_Nicolson, Oscillator, U0)
 plt.plot(t, U[1,:])
 plt.show()
 
-# Stability regions
+# Regiones de estabilidad usando todos los esquemas
 rho, x, y = Stability_region(Euler, 100, -4, 4, -4, 4)
 plt.contour(x, y, transpose(rho), linspace(0,1,11))
 plt.grid()
