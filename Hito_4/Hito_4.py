@@ -3,7 +3,7 @@ from numpy.linalg import norm, lstsq
 import matplotlib.pyplot as plt
 from ODEs.Cauchy_problem import Cauchy
 from ODEs.Temporal_schemes import Euler, Inverse_Euler, RK4, Crank_Nicolson
-from ODEs.Temporal_error import Error_Cauchy_Problem, Convergence_rate
+from ODEs.Temporal_error import Error_Cauchy_Problem, Richardson_extrapolation
 from ODEs.Stability import Stability_region
 
 # Funcion para integrar
