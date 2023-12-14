@@ -1,5 +1,6 @@
 from numpy import array, zeros
 
+# Función para integrar ecuaciones (problema de Cauchy)
 def Cauchy(t, temporal_scheme, f, U0):
     U = array (zeros((len(U0),len(t))))
     U[:,0] = U0

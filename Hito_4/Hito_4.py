@@ -6,7 +6,7 @@ from ODEs.Temporal_schemes import Euler, Inverse_Euler, RK4, Crank_Nicolson
 from ODEs.Temporal_error import Error_Cauchy_Problem, Convergence_rate
 from ODEs.Stability import Stability_region
 
-# Function to be integrated
+# Funcion para integrar
 def F_Kepler(t, U):
     x, y, vx, vy = U[0], U[1], U[2], U[3]
     mr = (x**2 + y**2)**1.5

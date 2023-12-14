@@ -7,9 +7,12 @@ from ODEs.Temporal_error import Error_Cauchy_Problem, Convergence_rate
 from ODEs.Stability import Stability_region
 from Equations.Equations import F_Kepler, Oscillator, N_body
 
+# Definicion de una funcion adicional, ya que la funcion de Cauchy solo da como inputs t y U, y la funcion
+# necesita tambien Nb y Nc.
 def F_NBody(t, U):
     return N_body(t, U, Nb, Nc)
 
+# Funcion para definir y guardar las condiciones iniciales en el vector U0
 def Init_cond(Nb, Nc):
     U0 = zeros(2*Nc*Nb)
     U1 = reshape(U0, (Nb, Nc, 2))  
@@ -32,20 +35,23 @@ def Init_cond(Nb, Nc):
     v0[4,:] = [0, -0.5, 0]
     return U0 
 
+# Definicion de los parametros de integracion
 N = 10000
 t0 = 0
 tf = 5
 t = linspace(t0, tf, N+1)
 
+# Definicion del numero de cuerpos y del numero de coordenadas por cuerpo
 Nb = 5
 Nc = 3
 
+# Resolucion del prolema de Cauchy
 U0 = Init_cond(Nb, Nc)
 U = Cauchy(t, RK4, F_NBody, U0)
 
+# Representacion de resultados (en 3 dimensiones)
 Us = reshape(U, (Nb, Nc, 2, N+1))
 r = reshape(Us[:, :, 0, :], (Nb, Nc, N+1))
-
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 for i in range(Nb):
