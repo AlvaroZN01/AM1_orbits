@@ -1,4 +1,4 @@
-from numpy import array, zeros, linalg
+from numpy import array, zeros
 import matplotlib.pyplot as plt
 from scipy import optimize
 
