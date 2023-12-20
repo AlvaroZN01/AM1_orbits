@@ -9,4 +9,5 @@ Para ejecutar los hitos 1 a 6, entrar en la carpeta _"HITOS"_, ejecutar el archi
 
 Para ejecutar el hito 7 (trabajo final de la asignatura), acceder a la carpeta _"Hito_7"_ y ejecutar _"Milestone7.py"_.
 
+En la carpeta _"Desarrollo_de_hitos"_ se ha incluido una copia de los hitos según se iban desarrollando, por lo que su contenido puede no funcionar adecuadamente. Para ejecutar los hitos 1 a 6, acceder a la carpeta _"HITOS"_.
 
