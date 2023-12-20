@@ -24,7 +24,7 @@ from Maths_ODEs.Cauchy_Problem import Cauchy_Problem
 from Maths_ODEs.Stability_Region import Region_Estabilidad
 from Maths_ODEs.Temporal_Error import Error_Cauchy_Problem, Temporal_Convergence_Rate
 
-from Maths_Equations.VanDerPol import VanDerPol_Libre, VanDerPol_ForzadoArmonico, VanDerPol_ForzadoEstocastico, VanDerPol_Libre2, VanDerPol_Libre3,VanDerPol_ForzadoEstocastico2
+from Maths_Equations.VanDerPol import VanDerPol_Libre, VanDerPol_ForzadoArmonico, VanDerPol_ForzadoEstocastico, VanDerPol_Libre2, VanDerPol_Libre3, VanDerPol_ForzadoEstocastico2, VanDerPol_ForzadoEstocastico3
 from Maths_Equations.Stochastic import Proceso_Wiener, Proceso_OrnsteinUhlenbeck
 from Physics.Kepler_Equation import Kepler_Equation
 
@@ -52,29 +52,52 @@ N = 10000
 print( "" )
 t = linspace( start = 0, stop = tf, num = N)
 U_0 = array([1,1,0.1])
-U1 =  Cauchy_Problem( VanDerPol_ForzadoEstocastico, t, U_0, AB4 )
-U_01 = array([0.1,0.1])
-U2 =  Cauchy_Problem( VanDerPol_ForzadoEstocastico2, t, U_0, AB4 )
+U1 =  Cauchy_Problem( VanDerPol_ForzadoEstocastico, t, U_0, RungeKutta_4 )
+U2 =  Cauchy_Problem( VanDerPol_ForzadoEstocastico, t, U_0, AB4 )
+# U3 =  Cauchy_Problem( VanDerPol_ForzadoEstocastico3, t, U_0, AB4 )
 #U3 =  Cauchy_Problem( VanDerPol_Libre3, t, U_0, AB4 )
 #print(U1)
 #Plot_2D(U1[:10000,0],U1[:10000,1],'x','y')
 
-#Plot_2D(t[:10000],U1[:10000,0],'x','y')
-#plt.show()
-##plt.show()
-#plt.figure(figsize=(7,7))
-#plt.plot(U1[:,0],U1[:,1], color='b',label='$\mu=1$')
-##plt.plot(U2[:,0],U2[:,1], color='r',label='$\mu=2$')
-##plt.plot(U3[:,0],U3[:,1], color='g',label='$\mu=4$')
-##plt.axis('equal')
-#plt.xlabel('$x$',fontsize=14)
-#plt.ylabel('$dx/dt$',fontsize=14)
-#plt.grid(True)
-#plt.legend(fontsize=14)
-#plt.savefig('VDP_mu_positivos.png')
-#plt.show()
-create_animation(U1,15,15,'VDPL_est_0.gif',N)
-create_animation(U2,15,15,'VDPL_est_1.gif',N)
+# Plot_2D(t[:10000],U1[:10000,0],'x','y')
+# plt.show()
+# #plt.show()
+# plt.figure(figsize=(7,7))
+# # plt.plot(U1[:,0],U1[:,1], color='b',label='$\mu=1$')
+# #plt.plot(U2[:,0],U2[:,1], color='r',label='$\mu=2$')
+# plt.plot(U3[:,0],U3[:,1], color='g',label='$\mu=4$')
+# #plt.axis('equal')
+# plt.xlabel('$x$',fontsize=14)
+# plt.ylabel('$dx/dt$',fontsize=14)
+# plt.grid(True)
+# plt.legend(fontsize=14)
+# plt.show()
+
+# create_animation(U1,15,15,'VDPL_est_D100.gif',N)
+# create_animation(U2,15,15,'VDPL_est_D400000.gif',N)
+# create_animation(U3,15,15,'VDPL_est_D20000.gif',N)
+# Histogram_2D(U1[:,0], U1[:,1], '$x$', '$dx/dt$', 'VDPL_est_D100.png')
+# Histogram_2D(U2[:,0], U2[:,1], '$x$', '$dx/dt$', 'VDPL_est_D400000.png')
+# Histogram_2D(U3[:,0], U3[:,1], '$x$', '$dx/dt$', 'VDPL_est_D20000.png')
+
+# create_animation(U1,15,15,'VDPL_est_tau05.gif',N)
+# create_animation(U2,15,15,'VDPL_est_tau03.gif',N)
+# create_animation(U3,15,15,'VDPL_est_tau01.gif',N)
+# Histogram_2D(U1[:,0], U1[:,1], '$x$', '$dx/dt$', 'VDPL_est_tau05.png')
+# Histogram_2D(U2[:,0], U2[:,1], '$x$', '$dx/dt$', 'VDPL_est_tau03.png')
+# Histogram_2D(U3[:,0], U3[:,1], '$x$', '$dx/dt$', 'VDPL_est_tau01.png')
+
+# create_animation(U1,15,15,'VDPL_est_mu1.gif',N)
+# create_animation(U2,15,15,'VDPL_est_mu0.gif',N)
+# create_animation(U3,15,15,'VDPL_est_mum1.gif',N)
+# Histogram_2D(U1[:,0], U1[:,1], '$x$', '$dx/dt$', 'VDPL_est_mu1.png')
+# Histogram_2D(U2[:,0], U2[:,1], '$x$', '$dx/dt$', 'VDPL_est_mu0.png')
+# Histogram_2D(U3[:,0], U3[:,1], '$x$', '$dx/dt$', 'VDPL_est_mum1.png')
+
+create_animation(U1,15,15,'VDPL_est_RK4.gif',N)
+create_animation(U2,15,15,'VDPL_est_AB4.gif',N)
+Histogram_2D(U1[:,0], U1[:,1], '$x$', '$dx/dt$', 'VDPL_est_RK4.png')
+Histogram_2D(U2[:,0], U2[:,1], '$x$', '$dx/dt$', 'VDPL_est_AB4.png')
 
 #Proceso_OrnsteinUhlenbeck(1, 3, 1, 1000)
 ##plt.xlabel('$x$',fontsize=14)

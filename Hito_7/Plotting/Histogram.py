@@ -8,7 +8,7 @@ from numpy import array, zeros, linspace, abs, transpose, float64, histogram2d, 
 from mpl_toolkits.mplot3d import Axes3D
 
 
-def Histogram_2D(Data_X, Data_Y, Label_X, Label_Y):
+def Histogram_2D(Data_X, Data_Y, Label_X, Label_Y, save_name):
 
     plt.figure(figsize=(7, 7))
     plt.hist2d(Data_X, Data_Y, bins=50, cmap='viridis')
@@ -16,6 +16,7 @@ def Histogram_2D(Data_X, Data_Y, Label_X, Label_Y):
     plt.xlabel(Label_X)
     plt.ylabel(Label_Y)
     plt.grid(True)
+    plt.savefig(save_name)
     plt.show()
 
 

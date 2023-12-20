@@ -55,9 +55,11 @@ def VanDerPol_ForzadoArmonico2( U, t ):
 
 def VanDerPol_ForzadoEstocastico(U, t ):
 
-    mu = 0
+    mu = 2
     tau = 0.1
-    D = 100
+    # tau = 0.5
+    # D = 100
+    D = 20000
     h = 0.01;	x = U[0]; y = U[1]; xi = U[2]
     Z = Box_Muller_random_generator(2,1)
  
@@ -67,7 +69,9 @@ def VanDerPol_ForzadoEstocastico2(U, t ):
 
     mu = 0
     tau = 0.1
-    D = 200000
+    # tau = 0.3
+    # D = 400000
+    D = 20000
     h = 0.01;	x = U[0]; y = U[1]; xi = U[2]
     Z = Box_Muller_random_generator(2,1)
  
@@ -75,7 +79,7 @@ def VanDerPol_ForzadoEstocastico2(U, t ):
 
 def VanDerPol_ForzadoEstocastico3(U, t ):
 
-    mu = 0
+    mu = -1
     tau = 0.1
     D = 20000
     h = 0.01;	x = U[0]; y = U[1]; xi = U[2]
