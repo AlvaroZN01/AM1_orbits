@@ -95,7 +95,7 @@ selected_point = input()
 
 # A = Jacobian(CR3BP_Lagrange, sol_Lagrange[:,selected_point])
 A = 1e-3 * random.normal(size=(2)) * norm(sol_Lagrange[:,int(selected_point)-1]) + sol_Lagrange[:,int(selected_point)-1]
-U0_stability = array([A[0], A[0], 1*sign(sol_Lagrange[0,int(selected_point)-1] - A[0]), -1 * sign(sol_Lagrange[1,int(selected_point)-1] - A[1])])
+U0_stability = array([A[0], A[1], 1*sign(sol_Lagrange[0,int(selected_point)-1] - A[0]), -1 * sign(sol_Lagrange[1,int(selected_point)-1] - A[1])])
 values, vectors = eig(Jacobian(CR3BP_Stability, A))
 # print(values)
 U_stability = Cauchy(t, RK_emb, CR3BP, U0_stability)
