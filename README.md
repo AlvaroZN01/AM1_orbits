@@ -9,6 +9,8 @@ Para ejecutar los hitos 1 a 6, entrar en la carpeta _"HITOS"_, ejecutar el archi
 
 Para ejecutar el hito 7 (trabajo final de la asignatura), acceder a la carpeta _"Hito_7"_ y ejecutar _"Milestone7.py"_.
 
+En la carpeta "_Presentacion_hito_7"_ se encuentra la presentación final de la asignatura y una copia de algunas de las imágenes insertadas en la misma. La presentación se encuentra comprimida debido a limitaciones de tamaño de subida de archivos. 
+
 En la carpeta _"Desarrollo_de_hitos"_ se ha incluido una copia de los hitos según se iban desarrollando, por lo que su contenido puede no funcionar adecuadamente. Para ejecutar los hitos 1 a 6, acceder a la carpeta _"HITOS"_.
 
 En la carpeta _"Plantilla_laTeX"_ se encuentra la plantilla que se empleó inicialmente para realizar los informes de los hitos. Finalmente no ha sido necesario realizar estos informes, pero se mantiene la plantilla por si es de utilidad. 
