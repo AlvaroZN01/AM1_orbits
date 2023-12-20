@@ -11,3 +11,6 @@ Para ejecutar el hito 7 (trabajo final de la asignatura), acceder a la carpeta _
 
 En la carpeta _"Desarrollo_de_hitos"_ se ha incluido una copia de los hitos según se iban desarrollando, por lo que su contenido puede no funcionar adecuadamente. Para ejecutar los hitos 1 a 6, acceder a la carpeta _"HITOS"_.
 
+En la carpeta _"Plantilla_laTeX"_ se encuentra la plantilla que se empleó inicialmente para realizar los informes de los hitos. Finalmente no ha sido necesario realizar estos informes, pero se mantiene la plantilla por si es de utilidad. 
+
+En la carpeta _"Wonderwall"_ se incluyen los archivos del ejercicio realizado en clase basado en la letra de la canción homónima. 
