@@ -67,3 +67,13 @@ def Stability_Lagrange(x, y, m1, m2, r12):
             U[ii,jj] = -pi1/sigma - pi2/psi - 1/2 * (pi1*sigma**2 + pi2*psi**2)
 
     return(U)
+
+def Jacobian(F, U):
+    N = len(U)
+    Jac = zeros([N,N])
+    t = 1e-6
+    for i in range(N):
+        xj = zeros(N)
+        xj[i] = norm(U)*t
+        Jac[:,i] = (F(U + xj) - F(U - xj))/(2*t)
+    return Jac

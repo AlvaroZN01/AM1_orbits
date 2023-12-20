@@ -15,5 +15,5 @@ elif hito_exe == 6:
 # elif hito_exe == 7:
     # import Hitos.Hito_7
 else:
-    print('Numero de hito incorrecto')
+    print('Numero de hito incorrecto, entradas válidas del 1 al 7')
     exit
